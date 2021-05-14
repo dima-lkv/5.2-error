@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cctype>
 #include "ClassList.hpp"
+#include <fstream>
 
 using namespace std;
 
@@ -17,9 +18,18 @@ int main()
 {
   pList pl[W];
   aList al[W];
-  unsigned i = 0;
-
+    // READING FROM A FILE
+    fstream inFile;
+    inFile.open("input.txt", ios::in);
+    if (!inFile)
+    {
+        int i = 0;
+        inFile >> pl[i].index;
+        cout << pl[i].index << endl;
+    }
+    
   //DATA ----------------------------------------------------
+    /*
   pl[i].index = 0;
   pl[i].pname = "Mac Book Air M1";
   pl[i].weight = "0.8kg";
@@ -53,7 +63,8 @@ int main()
   pl[i].weight = "0.04kg";
   pl[i].price = 220;
   pl[i].amount = 690000;
-
+     */
+    //DATA ----------------------------------------------------
 loop:
   cout << "--------------------------------------------------" << endl;
   cout << "What do you want to do with store DataBase?" << endl;
@@ -97,7 +108,14 @@ unsigned temp1 = 0;
     cin >> temp;
     for (temp; temp <= real; temp = temp + 1)
     {
-      pl[temp].pname = pl[temp + 1].pname;
+        //зробити видалення mass charr
+        unsigned j = 0;
+        while (pl[temp].pname[j] != EOF) {
+            pl[temp].pname[j] = pl[temp + 1].pname[j];
+        }
+        //зробити видалення mass charr
+        
+        
       pl[temp].weight = pl[temp + 1].weight;
       pl[temp].price = pl[temp + 1].price;
 
@@ -110,10 +128,10 @@ pl[temp].amount = pl[temp + 1].amount;
     }    break;
 
   case 4:
-    for (i = 0; i <= real; i++)
+    for (unsigned i = 0; i <= real; i++)
     {
       al[i].index = pl[i].index;
-      al[i].pname = pl[i].pname;
+     //al[i].pname = pl[i].pname;
       al[i].price = pl[i].price;
     }
     for (unsigned i = 0; i <= real; i++)
