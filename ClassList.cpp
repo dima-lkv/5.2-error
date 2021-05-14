@@ -35,9 +35,21 @@ pList :: ~pList()
 }
 void pList::input(int real)
 {
-    cout << "Please enter data in such sequence : " << endl << "Product: Name, Weight, Price, Amount." << endl;
-    cin >> pname >> weight >> price >> amount;
-    index = real + 1;
+    //issue solving
+    string dummy;
+    getline(cin,dummy);
+    //issue solving
+    
+    cout << "Please enter data!" << endl << "Product Name:" << endl;
+    getline(cin, pname);
+    cout << "Product Weight:" << endl;
+    cin >> weight;
+    cout << "Product Price:" << endl;
+    cin >> price;
+    cout << "Product Amount:" << endl;
+    cin >> amount;
+    
+    index = real++;
     print();
     this->real = real;
 }
@@ -55,19 +67,19 @@ void pList::edit()
     switch (temp)
     {
     case 1:
-      cout << "1) Product Name " << right << "|   " << pname << endl;
+      cout << "1) Product Name " << right << "|     " << pname << endl;
       cin >> pname;
       break;
     case 2:
-      cout << "2) Product Weight " << right << " | " << weight << endl;
+      cout << "2) Product Weight " << right << "|     " << weight << endl;
       cin >> weight;
       break;
     case 3:
-      cout << "3) Product Price " << right << " | " << price << endl;
+      cout << "3) Product Price " << right << "|     " << price << endl;
       cin >> price;
       break;
     case 4:
-      cout << "4) Product Amount " << right << "|   " << amount << endl;
+      cout << "4) Product Amount " << right << "|     " << amount << endl;
       cin >> amount;
       break;
     default:
