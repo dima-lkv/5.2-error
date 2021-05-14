@@ -10,30 +10,34 @@
 
 #include <stdio.h>
 #include <string>
+#define W 20
 
 using namespace std;
 
 class aList
 {
 public:
+    
+    int index;
+    string pname;
+    int price;
+    
     aList();
-  int price;
-  int index;
-  string pname;
-   
     ~aList();
 };
 
 class pList : public aList
 {
 public:
-    pList();
-    unsigned real;
+    
     string weight;
     int amount;
+    
+    unsigned real;
     void input(int real);
     void print();
     void edit();
+    pList();
     ~pList();
 };
 
